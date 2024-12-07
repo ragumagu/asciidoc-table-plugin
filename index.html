@@ -20,9 +20,9 @@
         display: flex;
         align-items: center;
 
-        margin:0;
+        margin: 0;
         line-height: 1.3;
-        
+
         background-color: lightblue;
         padding: 16px;
         white-space: pre-wrap;
@@ -47,8 +47,18 @@
     <h1>
         Asciidoc-table-plugin
     </h1>
+    <p> An asciidoc inspired table plugin for Markdown-it.</p>
+
+    <p>With this plugin, you can easily add tables to your markdown content.</p>
+
+    <p>The tables support mutli-line contents, and the cells wrap around to the next column
+        (without you having to manually put them there).</p>
+
+    <p>The cell contents can be any valid markup, and they will be rendered accordingly.</p>
+
+    <p>The markup for tables is simple:</p>
     <ul>
-        <li>All tables must start three colons (:::) after an empty line.</li>
+        <li>All tables must start with three colons (:::) after an empty line.</li>
         <li>All tables must end with three colons (:::).</li>
         <li>The beginning of every cell is marked by a pipe (|).</li>
         <li>An empty line is used to indicate the end of the header row.</li>
