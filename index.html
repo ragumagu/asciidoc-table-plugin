@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+<script type="module" src="/index.js"></script>
+<style>
+    html,
+    body {
+        font-family: sans-serif;
+        margin-left: 32px;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: minmax(360px, max-content) 1fr;
+        gap: 16px;
+    }
+
+    pre {
+        display: flex;
+        align-items: center;
+
+        margin:0;
+        line-height: 1.3;
+        
+        background-color: lightblue;
+        padding: 16px;
+        white-space: pre-wrap;
+        max-width: 60ch;
+    }
+
+    table,
+    th,
+    td {
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+
+    td,
+    th {
+        padding: 8px;
+        max-width: 40ch;
+    }
+</style>
+
+<body>
+    <h1>
+        Asciidoc-table-plugin
+    </h1>
+    <ul>
+        <li>All tables must start three colons (:::) after an empty line.</li>
+        <li>All tables must end with three colons (:::).</li>
+        <li>The beginning of every cell is marked by a pipe (|).</li>
+        <li>An empty line is used to indicate the end of the header row.</li>
+    </ul>
+    <p>For example,</p>
+    <pre class="input">
+:::
+| Name | Country | Population
+
+| Bengaluru | India | 14 MM
+| Chennai | India | 12 MM
+| Tokyo | Japan | 14 MM
+| Berlin | Germany | 4 MM
+:::
+</pre>
+
+
+    <h2> Multi-line </h2>
+    <p>
+        Table cell contents can span multiple lines.
+        You can include lists inside a table cell also.
+    </p>
+    <pre class="input">
+:::
+| Multi-line 
+table demo
+| Cell spans
+multiple lines
+
+|
+You can multiple paragraphs inside a cell. This is 
+useful when you have a lot of content.
+
+If you are looking at the source (before rendering), it
+does not look like a table. This scheme goes against 
+the traditional design principles of common Markdown, 
+which prefers to have readable source code. 
+
+But common Markdown does not support multiple lines in a 
+table cell, and that is quite a useful feature to have.
+
+| You can have:
+- Lists (numbered or not)
+- ```Block quotes```
+- and other elements
+
+Inside a table cell.
+:::
+</pre>
+    <h2> Cell wrapping</h2>
+
+    <p>You don't have to manually format the table.</p>
+    <p>Cells will automatically wrap based on the number of columns in the first row.</p>
+
+    <p>So, you can do this:</p>
+    <pre class="input">
+:::
+| Name
+| Country
+| Population
+
+| Bengaluru
+| India
+| 14 MM
+
+| Chennai
+| India
+| 12 MM
+
+| Tokyo
+| Japan
+| 14 MM
+
+| Berlin
+| Germany
+| 4 MM
+:::
+</pre>
+
+    <h2> Alignment markers</h2>
+
+    <p>You can align the contents of the table by using alignment markers.</p>
+    <pre class="input">
+:::
+| Alignment | Marker
+
+| Left | :---
+| Right | ---:
+| Center | :---:
+:::
+</pre>
+    <p>For example,</p>
+    <pre class="input">
+:::
+| :--: | :--: | --:
+| Name | Country | Population
+
+| Bengaluru | India | 14 MM
+| Chennai | India | 12 MM
+| Tokyo | Japan | 14 MM
+| Berlin | Germany | 4 MM
+:::
+</pre>
+    <p>The minimum number of hyphens is 1, but you can include more if you want to align with the next row, like this:
+    </p>
+    <pre class="input">
+:::
+| :--- | :-----: | ---------:
+| Name | Country | Population
+
+
+| Bengaluru | India | 14 MM
+| Chennai | India | 12 MM
+| Tokyo | Japan | 14 MM
+| Berlin | Germany | 4 MM
+:::
+    </pre>
+</body>
