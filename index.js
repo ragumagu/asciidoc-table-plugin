@@ -1,4 +1,4 @@
-import custom_table from "/plugin.js";
+import custom_table from "/asciidoc-table-plugin/plugin.js";
 
 const md = window.markdownit({ html: true });
 md.block.ruler.before('table', "custom_table", custom_table);
